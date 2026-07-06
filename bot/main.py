@@ -49,6 +49,7 @@ from modules.location_tracker import LocationTracker
 from modules.emote_timing_manager import EmoteTimingManager
 from modules.ai_chat_manager import ai_chat_manager
 from modules.edx_team_manager import edx_manager
+from modules.custom_welcome_manager import CustomWelcomeManager
 
 # إعدادات أساسية من ملف config.py
 try:
@@ -73,6 +74,7 @@ class MyBot(BaseBot):
         self.room_moderator_detector = RoomModeratorDetector(self)
         self.location_tracker = LocationTracker()
         self.emote_timing = EmoteTimingManager()
+        self.custom_welcome_manager = CustomWelcomeManager()
 
         # إدارة الرقصات التلقائية
         self.auto_emotes = {}
@@ -479,7 +481,19 @@ class MyBot(BaseBot):
             # رسائل ترحيب مخصصة حسب نوع المستخدم المتقدم
             user_type = advanced_user_type or user_info["user_type"]
 
-            if user_type == "bot_developer":
+            # ترحيب خاص مخصص (للمشرفين والمالك فقط)
+            is_privileged_for_custom_welcome = (
+                self.user_manager.is_owner(user.username)
+                or self.user_manager.is_moderator(user.username)
+                or user_type in ("room_owner", "moderator", "moderator_designer", "bot_developer")
+            )
+            custom_welcome_text = None
+            if is_privileged_for_custom_welcome:
+                custom_welcome_text = self.custom_welcome_manager.get_welcome_text(user.id)
+
+            if custom_welcome_text:
+                greeting = custom_welcome_text
+            elif user_type == "bot_developer":
                 owner_greetings = [
                     f"🔱 أهلاً وسهلاً بالمطور الكبير {user.username}! منور الروم يا باشا",
                     f"🔱 حضرتك منور يا {user.username}! البوت في خدمتك",

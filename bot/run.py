@@ -9,6 +9,8 @@ import zipfile
 from datetime import datetime
 from modules.update_manager import UpdateManager
 
+bot_instance = None
+
 
 class WebServer():
 

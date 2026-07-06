@@ -22,7 +22,8 @@ class ModeratorCommands:
                 "اسحبهم", "جيب @", "بدل ", "bot_dance", "رقص البوت",
                 "تغيير", "ريأكشن ", "المشرفين", "فحص @", "فحصني",
                 "احصائيات_الغرفة", "قائمة_المشرفين", "ثبت @", "الغ ثبت @",
-                "إلغاء_التثبيت @", "سجن @", "المثبتين", "ايقاف @", "طرد @"
+                "إلغاء_التثبيت @", "سجن @", "المثبتين", "ايقاف @", "طرد @",
+                "ترحيب ", "ترحيبي", "حذف ترحيبي"
             ]
 
             # فحص إذا كان الأمر يتطلب صلاحيات
@@ -46,6 +47,18 @@ class ModeratorCommands:
             if command_requires_mod and not is_moderator and not is_owner:
                 user_type = self.bot.user_manager.get_user_type(user.username, user.id)
                 return f"❌ آسف يا {user.username}، الأمر ده للمشرفين بس!\n👤 إنت: {user_type}\n💡 كلم المشرفين علشان يدوك الصلاحيات"
+
+            # أوامر الترحيب الخاص (للمشرفين والمالك فقط)
+            if message.startswith("ترحيب "):
+                welcome_text = message[len("ترحيب "):].strip()
+                return self.bot.custom_welcome_manager.set_welcome(user.id, user.username, welcome_text)
+
+            elif message == "حذف ترحيبي":
+                return self.bot.custom_welcome_manager.remove_welcome(user.id)
+
+            elif message == "ترحيبي":
+                return self.bot.custom_welcome_manager.get_my_welcome(user.id)
+
             # أوامر الأماكن (للمشرفين والمالك)
             if message == "حفظ":
                 try:

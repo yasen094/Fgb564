@@ -16,7 +16,7 @@
   "65402b9fffc87c0146e3dcb3": {
     "username": "HR_LY",
     "joined_at": "2026-07-06T13:10:27.153375",
-    "last_seen": "2026-07-06T15:10:03.008702",
+    "last_seen": "2026-07-06T16:38:37.779821",
     "user_type": "bot_developer",
     "is_active": true
   },
@@ -30,7 +30,7 @@
   "647cd0518ebaa8a67d6be6ee": {
     "username": "emoji_dinaa",
     "joined_at": "2026-07-06T14:43:59.709327",
-    "last_seen": "2026-07-06T14:43:59.709327",
+    "last_seen": "2026-07-06T16:37:01.950020",
     "user_type": "moderator",
     "is_active": true
   },
@@ -65,7 +65,7 @@
   "6062676531fe109865296dc0": {
     "username": "l.have.no.name",
     "joined_at": "2026-07-06T15:24:42.349628",
-    "last_seen": "2026-07-06T15:45:12.589005",
+    "last_seen": "2026-07-06T16:39:42.178942",
     "user_type": "moderator_designer",
     "is_active": true
   },
@@ -115,6 +115,55 @@
     "username": "B___o___s___s___y",
     "joined_at": "2026-07-06T16:05:37.461788",
     "last_seen": "2026-07-06T16:05:37.461788",
+    "user_type": "visitor",
+    "is_active": true
+  },
+  "69b25d6c5766922344d46c0e": {
+    "username": "QB.80",
+    "joined_at": "2026-07-06T16:22:31.836488",
+    "last_seen": "2026-07-06T16:22:31.836488",
+    "user_type": "visitor",
+    "is_active": true
+  },
+  "6325a16ae3a9969af75f8906": {
+    "username": "Haneen_Mohamed",
+    "joined_at": "2026-07-06T16:24:46.856886",
+    "last_seen": "2026-07-06T16:37:31.705168",
+    "user_type": "moderator",
+    "is_active": true
+  },
+  "69da850ea1e872f15d9135db": {
+    "username": "jowal123",
+    "joined_at": "2026-07-06T16:27:20.365279",
+    "last_seen": "2026-07-06T16:27:20.365279",
+    "user_type": "visitor",
+    "is_active": true
+  },
+  "6a49b8e38cfdc67cf94c9318": {
+    "username": "DeemW116",
+    "joined_at": "2026-07-06T16:33:04.388736",
+    "last_seen": "2026-07-06T16:33:04.388736",
+    "user_type": "visitor",
+    "is_active": true
+  },
+  "66906d00952a5de1d9b160e8": {
+    "username": "Jordanian_state_",
+    "joined_at": "2026-07-06T16:36:01.499506",
+    "last_seen": "2026-07-06T16:36:01.499506",
+    "user_type": "visitor",
+    "is_active": true
+  },
+  "64ddee1c2c2da026219ea5d0": {
+    "username": "W_G_L__S_",
+    "joined_at": "2026-07-06T16:36:28.405604",
+    "last_seen": "2026-07-06T16:36:28.405604",
+    "user_type": "visitor",
+    "is_active": true
+  },
+  "6a212d238bdd55d901c49945": {
+    "username": "judii___7",
+    "joined_at": "2026-07-06T16:40:41.408543",
+    "last_seen": "2026-07-06T16:41:38.045053",
     "user_type": "visitor",
     "is_active": true
   }

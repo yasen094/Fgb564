@@ -23,7 +23,7 @@ class ModeratorCommands:
                 "تغيير", "ريأكشن ", "المشرفين", "فحص @", "فحصني",
                 "احصائيات_الغرفة", "قائمة_المشرفين", "ثبت @", "الغ ثبت @",
                 "إلغاء_التثبيت @", "سجن @", "المثبتين", "ايقاف @", "طرد @",
-                "ترحيب ", "ترحيبي", "حذف ترحيبي"
+                "اضف ", "ترحيبي", "حذف ترحيبي"
             ]
 
             # فحص إذا كان الأمر يتطلب صلاحيات
@@ -49,8 +49,8 @@ class ModeratorCommands:
                 return f"❌ آسف يا {user.username}، الأمر ده للمشرفين بس!\n👤 إنت: {user_type}\n💡 كلم المشرفين علشان يدوك الصلاحيات"
 
             # أوامر الترحيب الخاص (للمشرفين والمالك فقط)
-            if message.startswith("ترحيب "):
-                welcome_text = message[len("ترحيب "):].strip()
+            if message.startswith("اضف "):
+                welcome_text = message[len("اضف "):].strip()
                 return self.bot.custom_welcome_manager.set_welcome(user.id, user.username, welcome_text)
 
             elif message == "حذف ترحيبي":

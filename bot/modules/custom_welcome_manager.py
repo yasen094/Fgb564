@@ -59,4 +59,4 @@ class CustomWelcomeManager:
         text = self.get_welcome_text(user_id)
         if text:
             return f"💌 ترحيبك الحالي:\n\"{text}\""
-        return "ℹ️ مفيش عندك ترحيب خاص محفوظ، اكتب 'ترحيبي <النص>' عشان تضيف واحد"
+        return "ℹ️ مفيش عندك ترحيب خاص محفوظ، اكتب 'اضف <النص>' عشان تضيف واحد"

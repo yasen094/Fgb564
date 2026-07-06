@@ -4875,5 +4875,111 @@
         "enhanced_context": true
       }
     }
+  ],
+  "65402b9fffc87c0146e3dcb3": [
+    {
+      "message": "هلا",
+      "username": "HR_LY",
+      "timestamp": "2026-07-06T16:26:37.883606",
+      "context": {
+        "sentiment": "neutral",
+        "intent": "questioning",
+        "topic": "general",
+        "question_type": "yes_no_question",
+        "emotion_level": "low",
+        "conversation_style": "casual",
+        "time_context": "ظهر",
+        "room_activity": "عادية"
+      },
+      "keywords": [
+        "هلا"
+      ],
+      "enhanced_data": {
+        "user_memory_accessed": true,
+        "system_knowledge_used": true,
+        "conversation_patterns_analyzed": true
+      }
+    },
+    {
+      "response": "☀️ أهلاً HR_LY! الغرفة نشطة في الظهيرة دي",
+      "username": "HR_LY",
+      "timestamp": "2026-07-06T16:26:38.216647",
+      "ai_generated": true,
+      "intelligence_level": "gemini_ai_advanced",
+      "capabilities_used": {
+        "memory_access": true,
+        "system_knowledge": true,
+        "pattern_analysis": true,
+        "enhanced_context": true
+      }
+    },
+    {
+      "message": "اا",
+      "username": "HR_LY",
+      "timestamp": "2026-07-06T16:26:50.788058",
+      "context": {
+        "sentiment": "neutral",
+        "intent": "casual_conversation",
+        "topic": "general",
+        "question_type": "open_question",
+        "emotion_level": "low",
+        "conversation_style": "neutral",
+        "time_context": "ظهر",
+        "room_activity": "عادية"
+      },
+      "keywords": [],
+      "enhanced_data": {
+        "user_memory_accessed": true,
+        "system_knowledge_used": true,
+        "conversation_patterns_analyzed": true
+      }
+    },
+    {
+      "response": "☀️ أهلاً HR_LY! الغرفة نشطة في الظهيرة دي",
+      "username": "HR_LY",
+      "timestamp": "2026-07-06T16:26:50.902793",
+      "ai_generated": true,
+      "intelligence_level": "gemini_ai_advanced",
+      "capabilities_used": {
+        "memory_access": true,
+        "system_knowledge": true,
+        "pattern_analysis": true,
+        "enhanced_context": true
+      }
+    },
+    {
+      "message": "ا",
+      "username": "HR_LY",
+      "timestamp": "2026-07-06T16:26:54.105153",
+      "context": {
+        "sentiment": "neutral",
+        "intent": "casual_conversation",
+        "topic": "general",
+        "question_type": "open_question",
+        "emotion_level": "low",
+        "conversation_style": "neutral",
+        "time_context": "ظهر",
+        "room_activity": "عادية"
+      },
+      "keywords": [],
+      "enhanced_data": {
+        "user_memory_accessed": true,
+        "system_knowledge_used": true,
+        "conversation_patterns_analyzed": true
+      }
+    },
+    {
+      "response": "☀️ أهلاً HR_LY! الغرفة نشطة في الظهيرة دي",
+      "username": "HR_LY",
+      "timestamp": "2026-07-06T16:26:54.204727",
+      "ai_generated": true,
+      "intelligence_level": "gemini_ai_advanced",
+      "capabilities_used": {
+        "memory_access": true,
+        "system_knowledge": true,
+        "pattern_analysis": true,
+        "enhanced_context": true
+      }
+    }
   ]
 }

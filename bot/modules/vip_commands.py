@@ -377,22 +377,35 @@ class VipCommands:
     async def vip_send_heart(self, user, target_username: str):
         """إرسال تفاعل قلب مرئي لمستخدم مستهدف"""
         try:
+            from highrise import Position
             room_users = await self.bot.highrise.get_room_users()
             target_user = None
-            for room_user, _ in room_users.content:
+            target_pos = None
+            for room_user, pos in room_users.content:
                 if room_user.username.lower() == target_username.lower():
                     target_user = room_user
+                    target_pos = pos
                     break
 
             if not target_user:
                 return f"❌ لم يتم العثور على @{target_username} في الغرفة"
 
-            print(f"💕 إرسال تفاعل قلب من {user.username} لـ {target_username} (ID: {target_user.id})")
+            print(f"💕 إرسال قلب من {user.username} لـ {target_username} (ID: {target_user.id})")
 
-            # إرسال 5 تفاعلات قلب متتالية فوق رأس المستخدم المستهدف
+            # تحريك البوت بجانب المستهدف حتى يظهر التفاعل مرئياً
+            if target_pos and hasattr(target_pos, 'x'):
+                try:
+                    near_pos = Position(target_pos.x, target_pos.y, target_pos.z)
+                    await self.bot.highrise.walk_to(near_pos)
+                    await asyncio.sleep(1.5)
+                    print(f"📍 البوت انتقل بجانب {target_username}")
+                except Exception as te:
+                    print(f"⚠️ تعذّر التحرك: {te}")
+
+            # إرسال 5 تفاعلات قلب متتالية
             for i in range(5):
                 await self.bot.highrise.react("heart", target_user.id)
-                print(f"💕 قلب {i+1}/5 أُرسل لـ {target_username}")
+                print(f"💕 قلب {i+1}/5 لـ {target_username}")
                 await asyncio.sleep(0.5)
 
             print(f"💕 انتهى إرسال القلوب لـ {target_username}")
@@ -405,22 +418,35 @@ class VipCommands:
     async def vip_send_wink(self, user, target_username: str):
         """إرسال تفاعل غمزة مرئية لمستخدم مستهدف"""
         try:
+            from highrise import Position
             room_users = await self.bot.highrise.get_room_users()
             target_user = None
-            for room_user, _ in room_users.content:
+            target_pos = None
+            for room_user, pos in room_users.content:
                 if room_user.username.lower() == target_username.lower():
                     target_user = room_user
+                    target_pos = pos
                     break
 
             if not target_user:
                 return f"❌ لم يتم العثور على @{target_username} في الغرفة"
 
-            print(f"😉 إرسال تفاعل غمزة من {user.username} لـ {target_username} (ID: {target_user.id})")
+            print(f"😉 إرسال غمزة من {user.username} لـ {target_username} (ID: {target_user.id})")
+
+            # تحريك البوت بجانب المستهدف
+            if target_pos and hasattr(target_pos, 'x'):
+                try:
+                    near_pos = Position(target_pos.x, target_pos.y, target_pos.z)
+                    await self.bot.highrise.walk_to(near_pos)
+                    await asyncio.sleep(1.5)
+                    print(f"📍 البوت انتقل بجانب {target_username}")
+                except Exception as te:
+                    print(f"⚠️ تعذّر التحرك: {te}")
 
             # إرسال 3 تفاعلات غمزة متتالية
             for i in range(3):
                 await self.bot.highrise.react("wink", target_user.id)
-                print(f"😉 غمزة {i+1}/3 أُرسلت لـ {target_username}")
+                print(f"😉 غمزة {i+1}/3 لـ {target_username}")
                 await asyncio.sleep(0.5)
 
             print(f"😉 انتهى إرسال الغمزات لـ {target_username}")

@@ -375,7 +375,7 @@ class VipCommands:
             return "❌ فشل في تنفيذ الغمزة، جرب مرة أخرى"
 
     async def vip_send_heart(self, user, target_username: str):
-        """إرسال تفاعلات قلب متعددة لمستخدم مستهدف"""
+        """إرسال قلب مرئي لمستخدم مستهدف"""
         try:
             room_users = await self.bot.highrise.get_room_users()
             target_user = None
@@ -387,26 +387,23 @@ class VipCommands:
             if not target_user:
                 return f"❌ لم يتم العثور على @{target_username} في الغرفة"
 
-            print(f"💕 بدء إرسال قلوب لـ {target_username} (ID: {target_user.id})")
+            # إعلان في الشات أولاً
+            await self.bot.highrise.chat(f"💕💕 @{user.username} يرسل قلوب لـ @{target_username} 💕💕")
 
-            # إرسال 5 تفاعلات قلب متتالية لتكون أوضح بصرياً
-            for i in range(5):
-                try:
-                    await self.bot.highrise.react("heart", target_user.id)
-                    print(f"💕 قلب {i+1}/5 تم إرساله لـ {target_username}")
-                    await asyncio.sleep(0.4)
-                except Exception as re:
-                    print(f"⚠️ خطأ في القلب {i+1}: {re}")
+            # emote قلب موجّه نحو المستخدم المستهدف (مرئي للجميع)
+            await self.bot.highrise.send_emote("emote-heartball", target_user.id)
+            await asyncio.sleep(2.5)
+            await self.bot.highrise.send_emote("emote-heartshape", target_user.id)
 
-            print(f"💕 انتهى إرسال القلوب لـ {target_username}")
-            return f"💕 تم إرسال قلوب لـ @{target_username}!"
+            print(f"💕 {user.username} أرسل قلب لـ {target_username}")
+            return f"💕 تم إرسال قلب لـ @{target_username}!"
 
         except Exception as e:
             print(f"❌ خطأ في إرسال القلب: {e}")
             return "❌ فشل في إرسال القلب"
 
     async def vip_send_wink(self, user, target_username: str):
-        """إرسال غمزات متعددة لمستخدم مستهدف"""
+        """إرسال غمزة مرئية لمستخدم مستهدف"""
         try:
             room_users = await self.bot.highrise.get_room_users()
             target_user = None
@@ -418,18 +415,13 @@ class VipCommands:
             if not target_user:
                 return f"❌ لم يتم العثور على @{target_username} في الغرفة"
 
-            print(f"😉 بدء إرسال غمزات لـ {target_username} (ID: {target_user.id})")
+            # إعلان في الشات أولاً
+            await self.bot.highrise.chat(f"😉 @{user.username} يرسل غمزة لـ @{target_username} 😉")
 
-            # إرسال 3 غمزات متتالية
-            for i in range(3):
-                try:
-                    await self.bot.highrise.react("wink", target_user.id)
-                    print(f"😉 غمزة {i+1}/3 تم إرسالها لـ {target_username}")
-                    await asyncio.sleep(0.5)
-                except Exception as re:
-                    print(f"⚠️ خطأ في الغمزة {i+1}: {re}")
+            # emote غمزة موجّه نحو المستخدم المستهدف (مرئي للجميع)
+            await self.bot.highrise.send_emote("emote-lust", target_user.id)
 
-            print(f"😉 انتهى إرسال الغمزات لـ {target_username}")
+            print(f"😉 {user.username} أرسل غمزة لـ {target_username}")
             return f"😉 تم إرسال غمزة لـ @{target_username}!"
 
         except Exception as e:

@@ -80,7 +80,7 @@
   "653c475ec581d3aeed5aecf6": {
     "username": "A__4o",
     "joined_at": "2026-07-07T22:47:56.269364",
-    "last_seen": "2026-07-07T22:47:56.269364",
+    "last_seen": "2026-07-07T23:07:16.852287",
     "user_type": "visitor",
     "is_active": true
   },
@@ -115,8 +115,15 @@
   "69a9f708f73eea5070f7a671": {
     "username": "4.SO",
     "joined_at": "2026-07-07T23:00:01.100135",
-    "last_seen": "2026-07-07T23:00:01.100135",
+    "last_seen": "2026-07-07T23:05:13.773999",
     "user_type": "moderator",
+    "is_active": true
+  },
+  "6564d8b62c7b5149a350f72d": {
+    "username": "n1q_",
+    "joined_at": "2026-07-07T23:02:22.781214",
+    "last_seen": "2026-07-07T23:02:22.781214",
+    "user_type": "visitor",
     "is_active": true
   }
 }

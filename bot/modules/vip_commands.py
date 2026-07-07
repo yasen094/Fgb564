@@ -375,40 +375,81 @@ class VipCommands:
             return "❌ فشل في تنفيذ الغمزة، جرب مرة أخرى"
 
     async def vip_send_heart(self, user, target_username: str):
-        """إرسال قلوب مرئية فوق رأس المستهدف — نفس آلية ريأكشن قلب"""
+        """إرسال قلوب مرئية: البوت يمشي للمستهدف ويؤدي emote قلب موجّه له"""
         try:
-            # استخدام دالة البوت الرئيسية التي ترسل 30 قلب بتأخير 0.1 ثانية
-            result = await self.bot.send_reaction_to_user(target_username, "قلب")
-            print(f"💕 {user.username} أرسل قلوب لـ {target_username}: {result}")
-            if "تم إرسال" in result:
-                return f"💕 تم إرسال قلوب لـ @{target_username}!"
-            return result
+            from highrise import Position
+            room_users = await self.bot.highrise.get_room_users()
+            target_user = None
+            target_pos = None
+            for room_user, pos in room_users.content:
+                if room_user.username.lower() == target_username.lower():
+                    target_user = room_user
+                    target_pos = pos
+                    break
+
+            if not target_user:
+                return f"❌ لم يتم العثور على @{target_username} في الغرفة"
+
+            print(f"💕 {user.username} يرسل قلوب لـ {target_username}")
+
+            # تحريك البوت للوقوف بجانب المستهدف
+            if target_pos and hasattr(target_pos, 'x'):
+                walk_pos = Position(
+                    max(0.0, target_pos.x - 1.0),
+                    target_pos.y,
+                    target_pos.z
+                )
+                await self.bot.highrise.walk_to(walk_pos)
+                await asyncio.sleep(2.0)
+
+            # emote قلب موجّه مباشرة للمستهدف (مرئي للجميع)
+            await self.bot.highrise.send_emote("emote-heartball", target_user.id)
+            await asyncio.sleep(3.0)
+            await self.bot.highrise.send_emote("emote-heartshape", target_user.id)
+            await asyncio.sleep(3.0)
+            await self.bot.highrise.send_emote("emote-heartball", target_user.id)
+
+            print(f"💕 تم إرسال قلوب لـ {target_username}")
+            return f"💕 تم إرسال قلوب لـ @{target_username}!"
 
         except Exception as e:
             print(f"❌ خطأ في إرسال القلب: {e}")
             return "❌ فشل في إرسال القلب"
 
     async def vip_send_wink(self, user, target_username: str):
-        """إرسال غمزات مرئية فوق رأس المستهدف"""
+        """إرسال غمزة مرئية: البوت يمشي للمستهدف ويؤدي emote غمزة موجّه له"""
         try:
+            from highrise import Position
             room_users = await self.bot.highrise.get_room_users()
             target_user = None
-            for room_user, _ in room_users.content:
+            target_pos = None
+            for room_user, pos in room_users.content:
                 if room_user.username.lower() == target_username.lower():
                     target_user = room_user
+                    target_pos = pos
                     break
 
             if not target_user:
                 return f"❌ لم يتم العثور على @{target_username} في الغرفة"
 
-            print(f"😉 {user.username} يرسل غمزات لـ {target_username}")
+            print(f"😉 {user.username} يرسل غمزة لـ {target_username}")
 
-            # إرسال 30 غمزة بتأخير 0.1 ثانية — نفس آلية ريأكشن
-            for i in range(30):
-                await self.bot.highrise.react("wink", target_user.id)
-                await asyncio.sleep(0.1)
+            # تحريك البوت للوقوف بجانب المستهدف
+            if target_pos and hasattr(target_pos, 'x'):
+                walk_pos = Position(
+                    max(0.0, target_pos.x - 1.0),
+                    target_pos.y,
+                    target_pos.z
+                )
+                await self.bot.highrise.walk_to(walk_pos)
+                await asyncio.sleep(2.0)
 
-            print(f"😉 انتهى إرسال الغمزات لـ {target_username}")
+            # emote غمزة موجّه مباشرة للمستهدف
+            await self.bot.highrise.send_emote("emote-lust", target_user.id)
+            await asyncio.sleep(3.5)
+            await self.bot.highrise.send_emote("emote-lust", target_user.id)
+
+            print(f"😉 تم إرسال غمزة لـ {target_username}")
             return f"😉 تم إرسال غمزة لـ @{target_username}!"
 
         except Exception as e:

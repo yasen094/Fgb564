@@ -54,25 +54,18 @@ class VipCommands:
             elif message == "wink" or message == "غمزة":
                 return await self.vip_wink(user)
 
-            # أوامر العقاب الخاصة بـ VIP والمطور
-            elif message.startswith("عقاب @"):
+            # أمر إرسال القلب لمستخدم
+            elif message.startswith("h @"):
                 parts = message.split()
                 if len(parts) >= 2 and parts[1].startswith("@"):
                     target_username = parts[1][1:]
-                    return await self.vip_start_punishment(user, target_username)
+                    return await self.vip_send_heart(user, target_username)
                 else:
-                    return "❌ يرجى كتابة اسم المستخدم بعد 'عقاب @'"
+                    return "❌ الاستخدام: h @اسم_المستخدم"
 
-            elif message.startswith("الغ_عقاب @"):
-                parts = message.split()
-                if len(parts) >= 2 and parts[1].startswith("@"):
-                    target_username = parts[1][1:]
-                    return await self.vip_stop_punishment(user, target_username)
-                else:
-                    return "❌ يرجى كتابة اسم المستخدم بعد 'الغ_عقاب @'"
-
-            elif message == "المعاقبين":
-                return await self.vip_get_punished_users_list(user)
+            # أمر نقل VIP إلى الموقع المميز
+            elif message == "vip":
+                return await self.vip_teleport_to_spot(user)
 
             return None
 
@@ -372,195 +365,36 @@ class VipCommands:
             print(f"❌ خطأ في تنفيذ الغمزة VIP: {e}")
             return "❌ فشل في تنفيذ الغمزة، جرب مرة أخرى"
 
-    async def vip_start_punishment(self, user, target_username: str):
-        """بدء العقاب VIP - خاص بـ VIP والمطور"""
+    async def vip_send_heart(self, user, target_username: str):
+        """إرسال تفاعل قلب لمستخدم مستهدف"""
         try:
-            # البحث عن المستخدم في الغرفة
-            room_users = (await self.bot.highrise.get_room_users()).content
+            room_users = await self.bot.highrise.get_room_users()
             target_user = None
-            original_position = None
-
-            for room_user, position in room_users:
+            for room_user, _ in room_users.content:
                 if room_user.username.lower() == target_username.lower():
                     target_user = room_user
-                    original_position = position
                     break
 
             if not target_user:
-                return f"❌ المستخدم '{target_username}' غير موجود في الغرفة"
+                return f"❌ لم يتم العثور على @{target_username} في الغرفة"
 
-            # تهيئة قاموس العقاب إذا لم يكن موجود
-            if not hasattr(self.bot, 'vip_punishment_tasks'):
-                self.bot.vip_punishment_tasks = {}
-
-            # إيقاف أي عقاب سابق لنفس المستخدم
-            if target_user.id in self.bot.vip_punishment_tasks:
-                self.bot.vip_punishment_tasks[target_user.id]["task"].cancel()
-
-            # بدء العقاب مع حفظ الموقع الأصلي
-            punishment_task = asyncio.create_task(
-                self._vip_punish_user_continuously(user, target_user, original_position)
-            )
-            self.bot.vip_punishment_tasks[target_user.id] = {
-                "task": punishment_task,
-                "vip_user": user.username,
-                "target_username": target_username,
-                "target_id": target_user.id,
-                "original_position": original_position
-            }
-
-            await self.bot.highrise.chat(f"💎⚡ VIP {user.username} بدأ عقاب متقدم لـ @{target_username}!")
-            print(f"💎⚡ VIP {user.username} بدأ عقاب {target_username}")
-            return f"💎✅ تم بدء العقاب المتقدم لـ {target_username} بنجاح!"
+            await self.bot.highrise.send_emote("emote-heartball", target_user.id)
+            print(f"💕 {user.username} أرسل قلب لـ {target_username}")
+            return f"💕 تم إرسال قلب لـ @{target_username}!"
 
         except Exception as e:
-            print(f"❌ خطأ في بدء العقاب VIP: {e}")
-            return f"❌ فشل في بدء العقاب: {str(e)}"
+            print(f"❌ خطأ في إرسال القلب: {e}")
+            return "❌ فشل في إرسال القلب"
 
-    async def _vip_punish_user_continuously(self, vip_user, target_user, original_position=None):
-        """تطبيق العقاب المستمر بواسطة VIP"""
+    async def vip_teleport_to_spot(self, user):
+        """نقل VIP إلى الموقع المميز"""
         try:
-            import random
             from highrise import Position
-
-            print(f"💎⚡ بدء العقاب VIP: {vip_user.username} يعاقب {target_user.username}")
-
-            punishment_count = 0
-            max_punishments = 75  # VIP يحصل على عدد أكبر من العقاب
-
-            while (target_user.id in getattr(self.bot, 'vip_punishment_tasks', {}) and 
-                   punishment_count < max_punishments):
-                try:
-                    # إنشاء إحداثيات عشوائية متقدمة
-                    x_ranges = [
-                        (-25, -15), (15, 25), (-35, -25), (25, 35),
-                        (-45, -35), (35, 45), (-20, 20), (-60, 60)
-                    ]
-                    z_ranges = [
-                        (-25, -15), (15, 25), (-35, -25), (25, 35),
-                        (-45, -35), (35, 45), (-20, 20), (-60, 60)
-                    ]
-                    y_values = [0, 0.5, 1.0, 1.5, 2.0, 2.5]
-
-                    # اختيار نطاق عشوائي
-                    x_range = random.choice(x_ranges)
-                    z_range = random.choice(z_ranges)
-
-                    # إنشاء موقع عشوائي
-                    random_position = Position(
-                        x=random.uniform(x_range[0], x_range[1]),
-                        y=random.choice(y_values),
-                        z=random.uniform(z_range[0], z_range[1])
-                    )
-
-                    # نقل المستخدم
-                    await self.bot.highrise.teleport(target_user.id, random_position)
-
-                    punishment_count += 1
-                    print(f"💎⚡ العقاب VIP {punishment_count}: نقل {target_user.username} بواسطة {vip_user.username}")
-
-                    # انتظار أقصر للعقاب المتقدم
-                    await asyncio.sleep(random.uniform(0.05, 0.2))
-
-                    # رسائل متقدمة
-                    if punishment_count == 25:
-                        await self.bot.highrise.chat(f"💎⚡ عقاب VIP في التقدم! {target_user.username} يتم تأديبه...")
-                    elif punishment_count == 50:
-                        await self.bot.highrise.chat(f"💎🔥 العقاب المتقدم يشتد! {target_user.username} لا يستطيع الهرب!")
-
-                except Exception as teleport_error:
-                    print(f"⚠️ خطأ في نقل المستخدم أثناء العقاب VIP: {teleport_error}")
-                    await asyncio.sleep(0.3)
-                    continue
-
-            # انتهاء العقاب - إرجاع المستخدم لمكانه الأصلي
-            try:
-                if original_position:
-                    await self.bot.highrise.teleport(target_user.id, original_position)
-                    await self.bot.highrise.chat(f"💎🏠 تم إرجاع @{target_user.username} إلى مكانه الأصلي بعد العقاب المتقدم!")
-                    print(f"💎🏠 تم إرجاع {target_user.username} إلى مكانه الأصلي")
-                else:
-                    print(f"⚠️ لا يوجد موقع أصلي محفوظ لـ {target_user.username}")
-            except Exception as return_error:
-                print(f"❌ خطأ في إرجاع المستخدم لمكانه الأصلي: {return_error}")
-
-            # إزالة من قائمة العقاب
-            if target_user.id in getattr(self.bot, 'vip_punishment_tasks', {}):
-                del self.bot.vip_punishment_tasks[target_user.id]
-
-            await self.bot.highrise.chat(f"💎✅ انتهى العقاب المتقدم لـ @{target_user.username} - تم نقله {punishment_count} مرة بواسطة VIP {vip_user.username}!")
-            print(f"💎✅ انتهى العقاب VIP لـ {target_user.username} بعد {punishment_count} عملية نقل")
-
-        except asyncio.CancelledError:
-            print(f"💎⏹️ تم إلغاء العقاب VIP لـ {target_user.username}")
-            # محاولة إرجاع المستخدم لمكانه الأصلي حتى لو تم إلغاء العقاب
-            try:
-                if original_position:
-                    await self.bot.highrise.teleport(target_user.id, original_position)
-                    await self.bot.highrise.chat(f"💎🏠 تم إرجاع @{target_user.username} إلى مكانه الأصلي بعد إلغاء العقاب VIP!")
-            except:
-                pass
-            await self.bot.highrise.chat(f"💎⏹️ تم إلغاء العقاب VIP لـ @{target_user.username}")
-        except Exception as e:
-            print(f"❌ خطأ في مهمة العقاب VIP: {e}")
-
-    async def vip_stop_punishment(self, user, target_username: str):
-        """إيقاف العقاب VIP عن المستخدم"""
-        try:
-            if not hasattr(self.bot, 'vip_punishment_tasks') or not self.bot.vip_punishment_tasks:
-                return "❌ لا توجد عقوبات VIP نشطة حالياً"
-
-            # البحث عن المستخدم في العقوبات النشطة
-            target_user_id = None
-            punishment_data = None
-            for user_id, data in self.bot.vip_punishment_tasks.items():
-                if data["target_username"].lower() == target_username.lower():
-                    target_user_id = user_id
-                    punishment_data = data
-                    break
-
-            if not target_user_id:
-                return f"❌ المستخدم '{target_username}' ليس تحت العقاب VIP حالياً"
-
-            # إلغاء العقاب
-            punishment_data["task"].cancel()
-
-            # محاولة إرجاع المستخدم لمكانه الأصلي
-            original_position = punishment_data.get("original_position")
-            if original_position:
-                try:
-                    await self.bot.highrise.teleport(target_user_id, original_position)
-                    await self.bot.highrise.chat(f"💎🏠 تم إرجاع @{target_username} إلى مكانه الأصلي!")
-                except Exception as e:
-                    print(f"❌ خطأ في إرجاع المستخدم لمكانه الأصلي: {e}")
-
-            del self.bot.vip_punishment_tasks[target_user_id]
-
-            await self.bot.highrise.chat(f"💎🛑 تم إلغاء العقاب VIP عن @{target_username} بواسطة {user.username}")
-            print(f"💎🛑 VIP {user.username} ألغى العقاب عن {target_username}")
-            return f"💎✅ تم إلغاء العقاب VIP عن {target_username} بنجاح"
+            vip_position = Position(13.0, 13.0, 27.0)
+            await self.bot.highrise.teleport(user.id, vip_position)
+            print(f"💎 تم نقل {user.username} إلى موقع VIP")
+            return "💎✨ مرحباً في منطقة VIP!"
 
         except Exception as e:
-            print(f"❌ خطأ في إلغاء العقاب VIP: {e}")
-            return f"❌ فشل في إلغاء العقاب: {str(e)}"
-
-    async def vip_get_punished_users_list(self, user):
-        """عرض قائمة المستخدمين المعاقبين بواسطة VIP"""
-        try:
-            if not hasattr(self.bot, 'vip_punishment_tasks') or not self.bot.vip_punishment_tasks:
-                return "💎⚡ لا يوجد مستخدمين تحت العقاب VIP حالياً"
-
-            punished_users = []
-            for user_id, punishment_data in self.bot.vip_punishment_tasks.items():
-                vip_user = punishment_data["vip_user"]
-                target_user = punishment_data["target_username"]
-                punished_users.append(f"💎 {target_user} (بواسطة {vip_user})")
-
-            users_text = "\n".join(punished_users)
-            count = len(self.bot.vip_punishment_tasks)
-
-            return f"💎⚡ المستخدمين تحت العقاب VIP حالياً ({count}):\n{users_text}\n💡 استخدم 'الغ_عقاب @اسم_المستخدم' لإلغاء العقاب"
-
-        except Exception as e:
-            print(f"❌ خطأ في عرض قائمة المعاقبين VIP: {e}")
-            return f"❌ خطأ في عرض قائمة المعاقبين: {str(e)}"
+            print(f"❌ خطأ في نقل VIP: {e}")
+            return "❌ فشل في النقل إلى موقع VIP"

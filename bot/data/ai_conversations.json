@@ -4980,6 +4980,42 @@
         "pattern_analysis": true,
         "enhanced_context": true
       }
+    },
+    {
+      "message": "هلا",
+      "username": "HR_LY",
+      "timestamp": "2026-07-07T20:03:05.350873",
+      "context": {
+        "sentiment": "neutral",
+        "intent": "questioning",
+        "topic": "general",
+        "question_type": "yes_no_question",
+        "emotion_level": "low",
+        "conversation_style": "casual",
+        "time_context": "مساء",
+        "room_activity": "عادية"
+      },
+      "keywords": [
+        "هلا"
+      ],
+      "enhanced_data": {
+        "user_memory_accessed": true,
+        "system_knowledge_used": true,
+        "conversation_patterns_analyzed": true
+      }
+    },
+    {
+      "response": "🌆 مساء الخير HR_LY! جو الغرفة حلو المساء ده",
+      "username": "HR_LY",
+      "timestamp": "2026-07-07T20:03:05.703280",
+      "ai_generated": true,
+      "intelligence_level": "gemini_ai_advanced",
+      "capabilities_used": {
+        "memory_access": true,
+        "system_knowledge": true,
+        "pattern_analysis": true,
+        "enhanced_context": true
+      }
     }
   ]
 }

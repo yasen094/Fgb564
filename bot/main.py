@@ -1926,7 +1926,7 @@ class MyBot(BaseBot):
                     await self.highrise.chat(f"❌ خطأ في الفحص التلقائي: {str(e)}")
 
             elif message == "زحمة" and user.id == BOT_OWNER_ID:
-                # تفعيل نظام حماية المطور
+                # المطور نظام حماية المطور
                 await self.activate_developer_protection(user)
 
             elif message == "فاضي" and user.id == BOT_OWNER_ID:

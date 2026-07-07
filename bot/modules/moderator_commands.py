@@ -31,7 +31,7 @@ class ModeratorCommands:
 
             # أوامر المالك والمطورين
             owner_developer_commands = ["promote ", "demote "]
-            owner_only_commands = ["اضافة_مشرف @", "ازالة_مشرف @"]
+            owner_only_commands = ["اضافة_مشرف @", "ازالة_مشرف @", "ترقية @"]
 
             command_requires_owner = any(message.startswith(cmd) for cmd in owner_only_commands)
             command_requires_owner_or_developer = any(message.startswith(cmd) for cmd in owner_developer_commands)
@@ -247,6 +247,42 @@ class ModeratorCommands:
                     return result
                 else:
                     return "❌ الصيغة الصحيحة: ازالة_مشرف @اسم_المستخدم"
+
+            elif message.startswith("ترقية @"):
+                if not self.bot.user_manager.is_owner(user.username):
+                    return f"❌ المعذرة يا {user.username}، هذا الأمر للمالك فقط!"
+
+                parts = message.split()
+                if len(parts) >= 2 and parts[1].startswith("@"):
+                    target_username = parts[1][1:]
+                    # البحث عن ID المستخدم في الغرفة
+                    try:
+                        room_users = (await self.bot.highrise.get_room_users()).content
+                        target_user = None
+                        for room_user, _ in room_users:
+                            if room_user.username.lower() == target_username.lower():
+                                target_user = room_user
+                                break
+
+                        if target_user:
+                            result = self.bot.user_manager.add_vip(target_username, target_user.id)
+                        else:
+                            result = self.bot.user_manager.add_vip(target_username)
+
+                        print(f"💎 تم تنفيذ أمر ترقية VIP: {target_username} بواسطة {user.username}")
+
+                        if result.startswith("✅"):
+                            try:
+                                await self.bot.highrise.chat(f"💎 تمت ترقية @{target_username} إلى VIP!")
+                            except:
+                                pass
+
+                        return result
+                    except Exception as vip_err:
+                        print(f"❌ خطأ في ترقية VIP: {vip_err}")
+                        return f"❌ فشل في الترقية: {str(vip_err)}"
+                else:
+                    return "❌ الصيغة الصحيحة: ترقية @اسم_المستخدم"
 
             # أوامر إدارة صلاحيات الغرفة (Room Privileges)
             elif message.startswith("promote "):
@@ -1551,186 +1587,6 @@ class ModeratorCommands:
         except Exception as e:
             return f"❌ خطأ في عرض قائمة المتابعين: {str(e)}"
 
-    async def start_punishment(self, target_username: str) -> str:
-        """بدء العقاب العشوائي للمستخدم"""
-        try:
-            # البحث عن المستخدم في الغرفة
-            room_users = (await self.bot.highrise.get_room_users()).content
-            target_user = None
-            original_position = None
-
-            for user, position in room_users:
-                if user.username.lower() == target_username.lower():
-                    target_user = user
-                    original_position = position
-                    break
-
-            if not target_user:
-                return f"❌ المستخدم '{target_username}' غير موجود في الغرفة"
-
-            # تهيئة قاموس العقاب إذا لم يكن موجود
-            if not hasattr(self.bot, 'punishment_tasks'):
-                self.bot.punishment_tasks = {}
-
-            # إيقاف أي عقاب سابق لنفس المستخدم
-            if target_user.id in self.bot.punishment_tasks:
-                self.bot.punishment_tasks[target_user.id]["task"].cancel()
-
-            # بدء العقاب مع حفظ الموقع الأصلي
-            punishment_task = asyncio.create_task(self.punish_user_continuously(target_user, original_position))
-            self.bot.punishment_tasks[target_user.id] = {
-                "task": punishment_task,
-                "username": target_username,
-                "target_id": target_user.id,
-                "original_position": original_position
-            }
-
-            await self.bot.highrise.chat(f"⚡ بدء العقاب العشوائي لـ @{target_username} - سيتم نقله بسرعة وعشوائية!")
-            return f"✅ تم بدء عقاب {target_username} بنجاح! سيتم نقله عشوائياً بسرعة عالية وإرجاعه لمكانه الأصلي بعد الانتهاء"
-
-        except Exception as e:
-            return f"❌ فشل في بدء العقاب: {str(e)}"
-
-    async def punish_user_continuously(self, target_user, original_position=None):
-        """تطبيق العقاب المستمر على المستخدم"""
-        try:
-            import random
-            from highrise import Position
-
-            print(f"⚡ بدء العقاب العشوائي لـ {target_user.username}")
-
-            punishment_count = 0
-            max_punishments = 50  # عدد مرات النقل العشوائي
-
-            while (target_user.id in getattr(self.bot, 'punishment_tasks', {}) and 
-                   punishment_count < max_punishments):
-                try:
-                    # إنشاء إحداثيات عشوائية في نطاقات مختلفة
-                    x_ranges = [
-                        (-20, -10), (10, 20), (-30, -20), (20, 30),
-                        (-40, -30), (30, 40), (-15, 15), (-50, 50)
-                    ]
-                    z_ranges = [
-                        (-20, -10), (10, 20), (-30, -20), (20, 30),
-                        (-40, -30), (30, 40), (-15, 15), (-50, 50)
-                    ]
-                    y_values = [0, 0.5, 1.0, 1.5, 2.0]
-
-                    # اختيار نطاق عشوائي
-                    x_range = random.choice(x_ranges)
-                    z_range = random.choice(z_ranges)
-
-                    # إنشاء موقع عشوائي
-                    random_position = Position(
-                        x=random.uniform(x_range[0], x_range[1]),
-                        y=random.choice(y_values),
-                        z=random.uniform(z_range[0], z_range[1])
-                    )
-
-                    # نقل المستخدم
-                    await self.bot.highrise.teleport(target_user.id, random_position)
-
-                    punishment_count += 1
-                    print(f"⚡ العقاب {punishment_count}: نقل {target_user.username} إلى ({random_position.x:.1f}, {random_position.y:.1f}, {random_position.z:.1f})")
-
-                    # انتظار قصير جداً للسرعة العالية
-                    await asyncio.sleep(random.uniform(0.1, 0.3))
-
-                    # في منتصف العقاب، أرسل رسالة تحذيرية
-                    if punishment_count == 25:
-                        await self.bot.highrise.chat(f"⚡ {target_user.username} يتم تأديبه! العقاب في منتصفه...")
-
-                except Exception as teleport_error:
-                    print(f"⚠️ خطأ في نقل المستخدم أثناء العقاب: {teleport_error}")
-                    await asyncio.sleep(0.5)
-                    continue
-
-            # انتهاء العقاب - إرجاع المستخدم لمكانه الأصلي
-            try:
-                if original_position:
-                    await self.bot.highrise.teleport(target_user.id, original_position)
-                    await self.bot.highrise.chat(f"🏠 تم إرجاع @{target_username} إلى مكانه الأصلي!")
-                    print(f"🏠 تم إرجاع {target_user.username} إلى مكانه الأصلي")
-                else:
-                    print(f"⚠️ لا يوجد موقع أصلي محفوظ لـ {target_user.username}")
-            except Exception as return_error:
-                print(f"❌ خطأ في إرجاع المستخدم لمكانه الأصلي: {return_error}")
-
-            # إزالة من قائمة العقاب
-            if target_user.id in getattr(self.bot, 'punishment_tasks', {}):
-                del self.bot.punishment_tasks[target_user.id]
-
-            await self.bot.highrise.chat(f"✅ انتهى العقاب لـ @{target_username} - تم نقله {punishment_count} مرة!")
-            print(f"✅ انتهى العقاب لـ {target_user.username} بعد {punishment_count} عملية نقل")
-
-        except asyncio.CancelledError:
-            print(f"⏹️ تم إلغاء العقاب لـ {target_user.username}")
-            # محاولة إرجاع المستخدم لمكانه الأصلي حتى لو تم إلغاء العقاب
-            try:
-                if original_position:
-                    await self.bot.highrise.teleport(target_user.id, original_position)
-                    await self.bot.highrise.chat(f"🏠 تم إرجاع @{target_username} إلى مكانه الأصلي بعد إلغاء العقاب!")
-            except:
-                pass
-            await self.bot.highrise.chat(f"⏹️ تم إلغاء العقاب لـ @{target_username}")
-        except Exception as e:
-            print(f"❌ خطأ في مهمة العقاب: {e}")
-
-    async def stop_punishment(self, target_username: str) -> str:
-        """إيقاف العقاب عن المستخدم وإرجاعه لمكانه الأصلي"""
-        try:
-            if not hasattr(self.bot, 'punishment_tasks') or not self.bot.punishment_tasks:
-                return "❌ لا توجد عقوبات نشطة حالياً"
-
-            # البحث عن المستخدم في العقوبات النشطة
-            target_user_id = None
-            punishment_data = None
-            for user_id, data in self.bot.punishment_tasks.items():
-                if data["username"].lower() == target_username.lower():
-                    target_user_id = user_id
-                    punishment_data = data
-                    break
-
-            if not target_user_id:
-                return f"❌ المستخدم '{target_username}' ليس تحت العقاب حالياً"
-
-            # إلغاء العقاب
-            punishment_data["task"].cancel()
-
-            # محاولة إرجاع المستخدم لمكانه الأصلي
-            original_position = punishment_data.get("original_position")
-            if original_position:
-                try:
-                    await self.bot.highrise.teleport(target_user_id, original_position)
-                    await self.bot.highrise.chat(f"🏠 تم إرجاع @{target_username} إلى مكانه الأصلي!")
-                except Exception as e:
-                    print(f"❌ خطأ في إرجاع المستخدم لمكانه الأصلي: {e}")
-
-            del self.bot.punishment_tasks[target_user_id]
-
-            await self.bot.highrise.chat(f"🛑 تم إلغاء العقاب عن @{target_username}")
-            return f"✅ تم إلغاء العقاب عن {target_username} بنجاح وإرجاعه لمكانه الأصلي"
-
-        except Exception as e:
-            return f"❌ فشل في إلغاء العقاب: {str(e)}"
-
-    def get_punished_users_list(self) -> str:
-        """عرض قائمة المستخدمين المعاقبين حالياً"""
-        try:
-            if not hasattr(self.bot, 'punishment_tasks') or not self.bot.punishment_tasks:
-                return "⚡ لا يوجد مستخدمين تحت العقاب حالياً"
-
-            punished_users = []
-            for user_id, punishment_data in self.bot.punishment_tasks.items():
-                punished_users.append(punishment_data["username"])
-
-            users_text = " | ".join(punished_users)
-            count = len(self.bot.punishment_tasks)
-
-            return f"⚡ المستخدمين تحت العقاب حالياً ({count}): {users_text}\n💡 استخدم 'الغ_عقاب @اسم_المستخدم' لإلغاء العقاب"
-
-        except Exception as e:
-            return f"❌ خطأ في عرض قائمة المعاقبين: {str(e)}"
 
     async def check_user_permissions(self, username: str):
         """فحص صلاحيات مستخدم"""

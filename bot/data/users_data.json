@@ -68,5 +68,19 @@
     "last_seen": "2026-07-07T21:58:44.929969",
     "user_type": "visitor",
     "is_active": true
+  },
+  "65844767c3c750db49e8d3c9": {
+    "username": "_uiv",
+    "joined_at": "2026-07-07T22:04:51.308374",
+    "last_seen": "2026-07-07T22:04:51.308374",
+    "user_type": "visitor",
+    "is_active": true
+  },
+  "69a9f708f73eea5070f7a671": {
+    "username": "4.SO",
+    "joined_at": "2026-07-07T22:05:43.429438",
+    "last_seen": "2026-07-07T22:05:43.429438",
+    "user_type": "moderator",
+    "is_active": true
   }
 }

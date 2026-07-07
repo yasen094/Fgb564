@@ -375,16 +375,13 @@ class VipCommands:
             return "❌ فشل في تنفيذ الغمزة، جرب مرة أخرى"
 
     async def vip_send_heart(self, user, target_username: str):
-        """إرسال قلوب مرئية: البوت يمشي للمستهدف ويؤدي emote قلب موجّه له"""
+        """إرسال تفاعل قلب لمستخدم مستهدف"""
         try:
-            from highrise import Position
             room_users = await self.bot.highrise.get_room_users()
             target_user = None
-            target_pos = None
-            for room_user, pos in room_users.content:
+            for room_user, _ in room_users.content:
                 if room_user.username.lower() == target_username.lower():
                     target_user = room_user
-                    target_pos = pos
                     break
 
             if not target_user:
@@ -392,22 +389,9 @@ class VipCommands:
 
             print(f"💕 {user.username} يرسل قلوب لـ {target_username}")
 
-            # تحريك البوت للوقوف بجانب المستهدف
-            if target_pos and hasattr(target_pos, 'x'):
-                walk_pos = Position(
-                    max(0.0, target_pos.x - 1.0),
-                    target_pos.y,
-                    target_pos.z
-                )
-                await self.bot.highrise.walk_to(walk_pos)
-                await asyncio.sleep(2.0)
-
-            # emote قلب موجّه مباشرة للمستهدف (مرئي للجميع)
-            await self.bot.highrise.send_emote("emote-heartball", target_user.id)
-            await asyncio.sleep(3.0)
-            await self.bot.highrise.send_emote("emote-heartshape", target_user.id)
-            await asyncio.sleep(3.0)
-            await self.bot.highrise.send_emote("emote-heartball", target_user.id)
+            for i in range(30):
+                await self.bot.highrise.react("heart", target_user.id)
+                await asyncio.sleep(0.1)
 
             print(f"💕 تم إرسال قلوب لـ {target_username}")
             return f"💕 تم إرسال قلوب لـ @{target_username}!"
@@ -417,16 +401,13 @@ class VipCommands:
             return "❌ فشل في إرسال القلب"
 
     async def vip_send_wink(self, user, target_username: str):
-        """إرسال غمزة مرئية: البوت يمشي للمستهدف ويؤدي emote غمزة موجّه له"""
+        """إرسال تفاعل غمزة لمستخدم مستهدف"""
         try:
-            from highrise import Position
             room_users = await self.bot.highrise.get_room_users()
             target_user = None
-            target_pos = None
-            for room_user, pos in room_users.content:
+            for room_user, _ in room_users.content:
                 if room_user.username.lower() == target_username.lower():
                     target_user = room_user
-                    target_pos = pos
                     break
 
             if not target_user:
@@ -434,20 +415,9 @@ class VipCommands:
 
             print(f"😉 {user.username} يرسل غمزة لـ {target_username}")
 
-            # تحريك البوت للوقوف بجانب المستهدف
-            if target_pos and hasattr(target_pos, 'x'):
-                walk_pos = Position(
-                    max(0.0, target_pos.x - 1.0),
-                    target_pos.y,
-                    target_pos.z
-                )
-                await self.bot.highrise.walk_to(walk_pos)
-                await asyncio.sleep(2.0)
-
-            # emote غمزة موجّه مباشرة للمستهدف
-            await self.bot.highrise.send_emote("emote-lust", target_user.id)
-            await asyncio.sleep(3.5)
-            await self.bot.highrise.send_emote("emote-lust", target_user.id)
+            for i in range(30):
+                await self.bot.highrise.react("wink", target_user.id)
+                await asyncio.sleep(0.1)
 
             print(f"😉 تم إرسال غمزة لـ {target_username}")
             return f"😉 تم إرسال غمزة لـ @{target_username}!"

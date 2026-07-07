@@ -160,5 +160,19 @@
     "last_seen": "2026-07-07T23:39:22.292110",
     "user_type": "visitor",
     "is_active": true
+  },
+  "6a405493de6e9f5c820c819d": {
+    "username": "namir.aswd",
+    "joined_at": "2026-07-07T23:43:31.789627",
+    "last_seen": "2026-07-07T23:43:31.789627",
+    "user_type": "visitor",
+    "is_active": true
+  },
+  "6a459acbec48379f05592362": {
+    "username": "UnderwingVolumes",
+    "joined_at": "2026-07-07T23:44:04.347060",
+    "last_seen": "2026-07-07T23:48:07.628916",
+    "user_type": "visitor",
+    "is_active": true
   }
 }

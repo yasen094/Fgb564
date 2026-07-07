@@ -375,79 +375,38 @@ class VipCommands:
             return "❌ فشل في تنفيذ الغمزة، جرب مرة أخرى"
 
     async def vip_send_heart(self, user, target_username: str):
-        """إرسال تفاعل قلب مرئي لمستخدم مستهدف"""
+        """إرسال قلوب مرئية فوق رأس المستهدف — نفس آلية ريأكشن قلب"""
         try:
-            from highrise import Position
-            room_users = await self.bot.highrise.get_room_users()
-            target_user = None
-            target_pos = None
-            for room_user, pos in room_users.content:
-                if room_user.username.lower() == target_username.lower():
-                    target_user = room_user
-                    target_pos = pos
-                    break
-
-            if not target_user:
-                return f"❌ لم يتم العثور على @{target_username} في الغرفة"
-
-            print(f"💕 إرسال قلب من {user.username} لـ {target_username} (ID: {target_user.id})")
-
-            # تحريك البوت بجانب المستهدف حتى يظهر التفاعل مرئياً
-            if target_pos and hasattr(target_pos, 'x'):
-                try:
-                    near_pos = Position(target_pos.x, target_pos.y, target_pos.z)
-                    await self.bot.highrise.walk_to(near_pos)
-                    await asyncio.sleep(1.5)
-                    print(f"📍 البوت انتقل بجانب {target_username}")
-                except Exception as te:
-                    print(f"⚠️ تعذّر التحرك: {te}")
-
-            # إرسال 5 تفاعلات قلب متتالية
-            for i in range(5):
-                await self.bot.highrise.react("heart", target_user.id)
-                print(f"💕 قلب {i+1}/5 لـ {target_username}")
-                await asyncio.sleep(0.5)
-
-            print(f"💕 انتهى إرسال القلوب لـ {target_username}")
-            return f"💕 تم إرسال قلوب لـ @{target_username}!"
+            # استخدام دالة البوت الرئيسية التي ترسل 30 قلب بتأخير 0.1 ثانية
+            result = await self.bot.send_reaction_to_user(target_username, "قلب")
+            print(f"💕 {user.username} أرسل قلوب لـ {target_username}: {result}")
+            if "تم إرسال" in result:
+                return f"💕 تم إرسال قلوب لـ @{target_username}!"
+            return result
 
         except Exception as e:
             print(f"❌ خطأ في إرسال القلب: {e}")
             return "❌ فشل في إرسال القلب"
 
     async def vip_send_wink(self, user, target_username: str):
-        """إرسال تفاعل غمزة مرئية لمستخدم مستهدف"""
+        """إرسال غمزات مرئية فوق رأس المستهدف"""
         try:
-            from highrise import Position
             room_users = await self.bot.highrise.get_room_users()
             target_user = None
-            target_pos = None
-            for room_user, pos in room_users.content:
+            for room_user, _ in room_users.content:
                 if room_user.username.lower() == target_username.lower():
                     target_user = room_user
-                    target_pos = pos
                     break
 
             if not target_user:
                 return f"❌ لم يتم العثور على @{target_username} في الغرفة"
 
-            print(f"😉 إرسال غمزة من {user.username} لـ {target_username} (ID: {target_user.id})")
+            print(f"😉 {user.username} يرسل غمزات لـ {target_username}")
 
-            # تحريك البوت بجانب المستهدف
-            if target_pos and hasattr(target_pos, 'x'):
-                try:
-                    near_pos = Position(target_pos.x, target_pos.y, target_pos.z)
-                    await self.bot.highrise.walk_to(near_pos)
-                    await asyncio.sleep(1.5)
-                    print(f"📍 البوت انتقل بجانب {target_username}")
-                except Exception as te:
-                    print(f"⚠️ تعذّر التحرك: {te}")
-
-            # إرسال 3 تفاعلات غمزة متتالية
-            for i in range(3):
+            # إرسال 30 غمزة بتأخير 0.1 ثانية — نفس آلية ريأكشن
+            for i in range(30):
                 await self.bot.highrise.react("wink", target_user.id)
-                print(f"😉 غمزة {i+1}/3 لـ {target_username}")
-                await asyncio.sleep(0.5)
+                await asyncio.sleep(0.1)
 
             print(f"😉 انتهى إرسال الغمزات لـ {target_username}")
             return f"😉 تم إرسال غمزة لـ @{target_username}!"

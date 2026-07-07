@@ -4475,8 +4475,8 @@
   "69a9f708f73eea5070f7a671": {
     "username": "4.SO",
     "first_visit": "2026-06-27T15:52:56.370328",
-    "last_visit": "2026-07-07T23:05:13.773999",
-    "visit_count": 203,
+    "last_visit": "2026-07-07T23:26:09.358150",
+    "visit_count": 205,
     "user_type": "moderator"
   },
   "67a0a539eca20e20483c6d97": {
@@ -10797,6 +10797,13 @@
     "username": "n1q_",
     "first_visit": "2026-07-07T23:02:22.781214",
     "last_visit": "2026-07-07T23:02:22.781214",
+    "visit_count": 1,
+    "user_type": "visitor"
+  },
+  "68021ecd9f57186c451e8cf1": {
+    "username": "777.99",
+    "first_visit": "2026-07-07T23:26:23.337830",
+    "last_visit": "2026-07-07T23:26:23.337830",
     "visit_count": 1,
     "user_type": "visitor"
   }

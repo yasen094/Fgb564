@@ -104,5 +104,19 @@
     "last_seen": "2026-07-07T22:54:54.296588",
     "user_type": "visitor",
     "is_active": true
+  },
+  "69d7e962dd8a6709249bdfe1": {
+    "username": "yoyo32._",
+    "joined_at": "2026-07-07T22:56:17.774250",
+    "last_seen": "2026-07-07T22:56:17.774250",
+    "user_type": "visitor",
+    "is_active": true
+  },
+  "69a9f708f73eea5070f7a671": {
+    "username": "4.SO",
+    "joined_at": "2026-07-07T23:00:01.100135",
+    "last_seen": "2026-07-07T23:00:01.100135",
+    "user_type": "moderator",
+    "is_active": true
   }
 }

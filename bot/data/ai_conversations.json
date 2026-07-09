@@ -4874,6 +4874,114 @@
         "pattern_analysis": true,
         "enhanced_context": true
       }
+    },
+    {
+      "message": "هلا",
+      "username": "li_gy694",
+      "timestamp": "2026-07-08T05:34:10.437123",
+      "context": {
+        "sentiment": "neutral",
+        "intent": "questioning",
+        "topic": "general",
+        "question_type": "yes_no_question",
+        "emotion_level": "low",
+        "conversation_style": "casual",
+        "time_context": "صباح",
+        "room_activity": "عادية"
+      },
+      "keywords": [
+        "هلا"
+      ],
+      "enhanced_data": {
+        "user_memory_accessed": true,
+        "system_knowledge_used": true,
+        "conversation_patterns_analyzed": true
+      }
+    },
+    {
+      "response": "🌅 صباح الخير li_gy694! بداية يوم جديد في الغرفة",
+      "username": "li_gy694",
+      "timestamp": "2026-07-08T05:34:10.792663",
+      "ai_generated": true,
+      "intelligence_level": "gemini_ai_advanced",
+      "capabilities_used": {
+        "memory_access": true,
+        "system_knowledge": true,
+        "pattern_analysis": true,
+        "enhanced_context": true
+      }
+    },
+    {
+      "message": "اوامر",
+      "username": "li_gy694",
+      "timestamp": "2026-07-08T05:34:16.209102",
+      "context": {
+        "sentiment": "neutral",
+        "intent": "casual_conversation",
+        "topic": "general",
+        "question_type": "open_question",
+        "emotion_level": "low",
+        "conversation_style": "neutral",
+        "time_context": "صباح",
+        "room_activity": "عادية"
+      },
+      "keywords": [
+        "اوامر"
+      ],
+      "enhanced_data": {
+        "user_memory_accessed": true,
+        "system_knowledge_used": true,
+        "conversation_patterns_analyzed": true
+      }
+    },
+    {
+      "response": "🌅 صباح الخير li_gy694! بداية يوم جديد في الغرفة",
+      "username": "li_gy694",
+      "timestamp": "2026-07-08T05:34:16.327045",
+      "ai_generated": true,
+      "intelligence_level": "gemini_ai_advanced",
+      "capabilities_used": {
+        "memory_access": true,
+        "system_knowledge": true,
+        "pattern_analysis": true,
+        "enhanced_context": true
+      }
+    },
+    {
+      "message": "رقصات",
+      "username": "li_gy694",
+      "timestamp": "2026-07-08T13:26:33.445974",
+      "context": {
+        "sentiment": "neutral",
+        "intent": "casual_conversation",
+        "topic": "general",
+        "question_type": "open_question",
+        "emotion_level": "low",
+        "conversation_style": "neutral",
+        "time_context": "ظهر",
+        "room_activity": "عادية"
+      },
+      "keywords": [
+        "رقصات"
+      ],
+      "enhanced_data": {
+        "user_memory_accessed": true,
+        "system_knowledge_used": true,
+        "conversation_patterns_analyzed": true
+      }
+    },
+    {
+      "response": "☀️ أهلاً li_gy694! الغرفة نشطة في الظهيرة دي",
+      "username": "li_gy694",
+      "timestamp": "2026-07-08T13:26:33.619173",
+      "ai_generated": true,
+      "intelligence_level": "gemini_ai_advanced",
+      "capabilities_used": {
+        "memory_access": true,
+        "system_knowledge": true,
+        "pattern_analysis": true,
+        "enhanced_context": true
+      }
     }
   ],
   "65402b9fffc87c0146e3dcb3": [
@@ -5008,6 +5116,153 @@
       "response": "🌆 مساء الخير HR_LY! جو الغرفة حلو المساء ده",
       "username": "HR_LY",
       "timestamp": "2026-07-07T20:03:05.703280",
+      "ai_generated": true,
+      "intelligence_level": "gemini_ai_advanced",
+      "capabilities_used": {
+        "memory_access": true,
+        "system_knowledge": true,
+        "pattern_analysis": true,
+        "enhanced_context": true
+      }
+    },
+    {
+      "message": "كيفك",
+      "username": "HR_LY",
+      "timestamp": "2026-07-09T00:22:06.894684",
+      "context": {
+        "sentiment": "neutral",
+        "intent": "questioning",
+        "topic": "general",
+        "question_type": "how_question",
+        "emotion_level": "low",
+        "conversation_style": "casual",
+        "time_context": "ليل",
+        "room_activity": "عادية"
+      },
+      "keywords": [
+        "كيفك"
+      ],
+      "enhanced_data": {
+        "user_memory_accessed": true,
+        "system_knowledge_used": true,
+        "conversation_patterns_analyzed": true
+      }
+    },
+    {
+      "response": "🌙 أهلاً HR_LY! سهرة حلوة في الغرفة الليلة",
+      "username": "HR_LY",
+      "timestamp": "2026-07-09T00:22:07.019251",
+      "ai_generated": true,
+      "intelligence_level": "gemini_ai_advanced",
+      "capabilities_used": {
+        "memory_access": true,
+        "system_knowledge": true,
+        "pattern_analysis": true,
+        "enhanced_context": true
+      }
+    },
+    {
+      "message": "انا مالك البوت",
+      "username": "HR_LY",
+      "timestamp": "2026-07-09T00:22:20.029830",
+      "context": {
+        "sentiment": "neutral",
+        "intent": "questioning",
+        "topic": "general",
+        "question_type": "open_question",
+        "emotion_level": "low",
+        "conversation_style": "neutral",
+        "time_context": "ليل",
+        "room_activity": "عادية"
+      },
+      "keywords": [
+        "انا",
+        "مالك",
+        "البوت"
+      ],
+      "enhanced_data": {
+        "user_memory_accessed": true,
+        "system_knowledge_used": true,
+        "conversation_patterns_analyzed": true
+      }
+    },
+    {
+      "response": "🌙 أهلاً HR_LY! سهرة حلوة في الغرفة الليلة",
+      "username": "HR_LY",
+      "timestamp": "2026-07-09T00:22:20.139777",
+      "ai_generated": true,
+      "intelligence_level": "gemini_ai_advanced",
+      "capabilities_used": {
+        "memory_access": true,
+        "system_knowledge": true,
+        "pattern_analysis": true,
+        "enhanced_context": true
+      }
+    },
+    {
+      "message": "بطل الشفاء",
+      "username": "HR_LY",
+      "timestamp": "2026-07-09T00:43:06.197469",
+      "context": {
+        "sentiment": "neutral",
+        "intent": "casual_conversation",
+        "topic": "general",
+        "question_type": "open_question",
+        "emotion_level": "low",
+        "conversation_style": "neutral",
+        "time_context": "ليل",
+        "room_activity": "عادية"
+      },
+      "keywords": [
+        "بطل",
+        "الشفاء"
+      ],
+      "enhanced_data": {
+        "user_memory_accessed": true,
+        "system_knowledge_used": true,
+        "conversation_patterns_analyzed": true
+      }
+    },
+    {
+      "response": "🌙 أهلاً HR_LY! سهرة حلوة في الغرفة الليلة",
+      "username": "HR_LY",
+      "timestamp": "2026-07-09T00:43:06.336474",
+      "ai_generated": true,
+      "intelligence_level": "gemini_ai_advanced",
+      "capabilities_used": {
+        "memory_access": true,
+        "system_knowledge": true,
+        "pattern_analysis": true,
+        "enhanced_context": true
+      }
+    },
+    {
+      "message": "هلا",
+      "username": "HR_LY",
+      "timestamp": "2026-07-09T02:01:36.249126",
+      "context": {
+        "sentiment": "neutral",
+        "intent": "questioning",
+        "topic": "general",
+        "question_type": "yes_no_question",
+        "emotion_level": "low",
+        "conversation_style": "casual",
+        "time_context": "ليل",
+        "room_activity": "عادية"
+      },
+      "keywords": [
+        "هلا"
+      ],
+      "enhanced_data": {
+        "user_memory_accessed": true,
+        "system_knowledge_used": true,
+        "conversation_patterns_analyzed": true
+      }
+    },
+    {
+      "response": "🌙 أهلاً HR_LY! سهرة حلوة في الغرفة الليلة",
+      "username": "HR_LY",
+      "timestamp": "2026-07-09T02:01:36.604031",
       "ai_generated": true,
       "intelligence_level": "gemini_ai_advanced",
       "capabilities_used": {

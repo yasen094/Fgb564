@@ -1,177 +1,29 @@
 {
-  "666a2de829685ce6aeb6773d": {
-    "username": "hr_ly3_bot",
-    "joined_at": "2026-07-07T07:57:29.397514",
-    "last_seen": "2026-07-07T07:57:29.397514",
-    "user_type": "moderator_designer",
-    "is_active": true
-  },
-  "67ec60ad7c40455d7487ae16": {
-    "username": "HR_LY10",
-    "joined_at": "2026-07-07T18:03:30.881282",
-    "last_seen": "2026-07-07T23:17:15.308171",
+  "6062676531fe109865296dc0": {
+    "username": "l.have.no.name",
+    "joined_at": "2026-07-09T05:08:58.172329",
+    "last_seen": "2026-07-09T05:08:58.172329",
     "user_type": "moderator_designer",
     "is_active": true
   },
   "65402b9fffc87c0146e3dcb3": {
     "username": "HR_LY",
-    "joined_at": "2026-07-07T19:26:35.730952",
-    "last_seen": "2026-07-07T23:35:18.688075",
+    "joined_at": "2026-07-09T05:09:02.132840",
+    "last_seen": "2026-07-09T05:09:02.132840",
     "user_type": "bot_developer",
     "is_active": true
   },
-  "6062676531fe109865296dc0": {
-    "username": "l.have.no.name",
-    "joined_at": "2026-07-07T21:57:24.809402",
-    "last_seen": "2026-07-07T23:32:44.810189",
-    "user_type": "moderator_designer",
-    "is_active": true,
-    "is_vip": true
-  },
-  "6325a16ae3a9969af75f8906": {
-    "username": "Haneen_Mohamed",
-    "joined_at": "2026-07-07T22:07:55.917884",
-    "last_seen": "2026-07-07T22:45:15.807623",
-    "user_type": "moderator",
-    "is_active": true
-  },
-  "62587925a3da560ae072042c": {
-    "username": "ee2.007",
-    "joined_at": "2026-07-07T22:08:24.009444",
-    "last_seen": "2026-07-07T22:45:07.038040",
+  "67f53b4d9d997810968b7179": {
+    "username": "M.UM",
+    "joined_at": "2026-07-09T05:13:02.364821",
+    "last_seen": "2026-07-09T05:13:02.364821",
     "user_type": "visitor",
     "is_active": true
   },
-  "6a35c0736e14279a87b52506": {
-    "username": "Deems_2003",
-    "joined_at": "2026-07-07T22:15:21.291050",
-    "last_seen": "2026-07-07T22:45:48.818940",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "673333634d35f487160fe863": {
-    "username": "A_K_P",
-    "joined_at": "2026-07-07T22:21:04.865616",
-    "last_seen": "2026-07-07T22:21:04.865616",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "6a3127c599bed0159eb0bbf8": {
-    "username": "sraa__20",
-    "joined_at": "2026-07-07T22:33:51.795749",
-    "last_seen": "2026-07-07T22:33:51.795749",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "6a0406867be2414306fef0fd": {
-    "username": "Fabiana_55",
-    "joined_at": "2026-07-07T22:41:38.668489",
-    "last_seen": "2026-07-07T22:45:05.009230",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "67a8d00c6e038d2e58a44d86": {
-    "username": "A._.L._.R",
-    "joined_at": "2026-07-07T22:46:52.927196",
-    "last_seen": "2026-07-07T23:35:27.367401",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "653c475ec581d3aeed5aecf6": {
-    "username": "A__4o",
-    "joined_at": "2026-07-07T22:47:56.269364",
-    "last_seen": "2026-07-07T23:38:42.282835",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "69f918e40ff25b5976a4e022": {
-    "username": "ayad25",
-    "joined_at": "2026-07-07T22:48:44.821399",
-    "last_seen": "2026-07-07T22:48:44.821399",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "6a4c314d6fab1327e938743b": {
-    "username": "Totalitar2",
-    "joined_at": "2026-07-07T22:52:35.279544",
-    "last_seen": "2026-07-07T22:52:35.279544",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "6a032b3de1eb7d432ed11194": {
-    "username": "H_86209",
-    "joined_at": "2026-07-07T22:54:54.296588",
-    "last_seen": "2026-07-07T22:54:54.296588",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "69d7e962dd8a6709249bdfe1": {
-    "username": "yoyo32._",
-    "joined_at": "2026-07-07T22:56:17.774250",
-    "last_seen": "2026-07-07T22:56:17.774250",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "69a9f708f73eea5070f7a671": {
-    "username": "4.SO",
-    "joined_at": "2026-07-07T23:00:01.100135",
-    "last_seen": "2026-07-07T23:28:18.299925",
-    "user_type": "moderator",
-    "is_active": true
-  },
-  "6564d8b62c7b5149a350f72d": {
-    "username": "n1q_",
-    "joined_at": "2026-07-07T23:02:22.781214",
-    "last_seen": "2026-07-07T23:02:22.781214",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "68021ecd9f57186c451e8cf1": {
-    "username": "777.99",
-    "joined_at": "2026-07-07T23:26:23.337830",
-    "last_seen": "2026-07-07T23:26:23.337830",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "68e2871c1a0552a6265c1ea7": {
-    "username": "A._.l._.B1",
-    "joined_at": "2026-07-07T23:28:16.843305",
-    "last_seen": "2026-07-07T23:28:16.843305",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "6a21b551a495e7c2cf2db8da": {
-    "username": "FU.E",
-    "joined_at": "2026-07-07T23:29:20.379085",
-    "last_seen": "2026-07-07T23:39:23.781935",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "66ce13d154f0f7494d97b845": {
-    "username": "NooR_Half",
-    "joined_at": "2026-07-07T23:36:13.772241",
-    "last_seen": "2026-07-07T23:36:13.772241",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "66debcb22dcd07c4b4149aa0": {
-    "username": "im.left",
-    "joined_at": "2026-07-07T23:39:22.292110",
-    "last_seen": "2026-07-07T23:39:22.292110",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "6a405493de6e9f5c820c819d": {
-    "username": "namir.aswd",
-    "joined_at": "2026-07-07T23:43:31.789627",
-    "last_seen": "2026-07-07T23:43:31.789627",
-    "user_type": "visitor",
-    "is_active": true
-  },
-  "6a459acbec48379f05592362": {
-    "username": "UnderwingVolumes",
-    "joined_at": "2026-07-07T23:44:04.347060",
-    "last_seen": "2026-07-07T23:48:07.628916",
+  "6a1d9608004483740949dcae": {
+    "username": "S_A_R_A_72",
+    "joined_at": "2026-07-09T05:18:38.861333",
+    "last_seen": "2026-07-09T05:18:38.861333",
     "user_type": "visitor",
     "is_active": true
   }

@@ -26,7 +26,13 @@
   "65a55fa3e20b15b83711fe53": {
     "username": "li_gy694",
     "activated_at": "2026-07-02T15:49:24.439916",
-    "message_count": 2,
+    "message_count": 5,
+    "conversation_style": "friendly"
+  },
+  "65402b9fffc87c0146e3dcb3": {
+    "username": "HR_LY",
+    "activated_at": "2026-07-09T00:21:58.965240",
+    "message_count": 4,
     "conversation_style": "friendly"
   }
 }

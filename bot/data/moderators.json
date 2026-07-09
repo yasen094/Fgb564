@@ -75,7 +75,8 @@
     "li_gy694",
     "A._.l._.B1",
     "A._.L._.R",
-    "S_A_R_A_72"
+    "S_A_R_A_72",
+    "XC_BOT_3"
   ],
   "room_moderators": [
     "682bc2bc9fb4dce9e7cd4bd1",
@@ -131,10 +132,12 @@
     "6a45961aec48379f05591a4e",
     "69ce7c5425e09b3043125eac",
     "6325a16ae3a9969af75f8906",
-    "642b57a43ba97e918a21c94a"
+    "642b57a43ba97e918a21c94a",
+    "65cfbc2f4c37fa07d6f88908",
+    "6a1d9608004483740949dcae"
   ],
   "room_owner": "65a093ba8b86d5ac39cfdbed",
   "room_king": null,
   "room_queen": null,
-  "updated_at": "2026-07-09T01:48:25.468146"
+  "updated_at": "2026-07-09T15:50:43.023657"
 }

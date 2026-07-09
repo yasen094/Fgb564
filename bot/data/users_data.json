@@ -1,30 +1,51 @@
 {
-  "6062676531fe109865296dc0": {
-    "username": "l.have.no.name",
-    "joined_at": "2026-07-09T05:08:58.172329",
-    "last_seen": "2026-07-09T05:08:58.172329",
+  "666a2de829685ce6aeb6773d": {
+    "username": "hr_ly3_bot",
+    "joined_at": "2026-07-09T09:59:24.126454",
+    "last_seen": "2026-07-09T09:59:24.126454",
+    "user_type": "moderator_designer",
+    "is_active": true
+  },
+  "67ec60ad7c40455d7487ae16": {
+    "username": "HR_LY10",
+    "joined_at": "2026-07-09T09:59:24.852712",
+    "last_seen": "2026-07-09T16:08:41.399613",
+    "user_type": "moderator_designer",
+    "is_active": true
+  },
+  "65cfbc2f4c37fa07d6f88908": {
+    "username": "XC_BOT_3",
+    "joined_at": "2026-07-09T14:50:40.238961",
+    "last_seen": "2026-07-09T16:08:41.386040",
     "user_type": "moderator_designer",
     "is_active": true
   },
   "65402b9fffc87c0146e3dcb3": {
     "username": "HR_LY",
-    "joined_at": "2026-07-09T05:09:02.132840",
-    "last_seen": "2026-07-09T05:09:02.132840",
+    "joined_at": "2026-07-09T16:15:25.098498",
+    "last_seen": "2026-07-09T17:09:54.842552",
     "user_type": "bot_developer",
     "is_active": true
   },
-  "67f53b4d9d997810968b7179": {
-    "username": "M.UM",
-    "joined_at": "2026-07-09T05:13:02.364821",
-    "last_seen": "2026-07-09T05:13:02.364821",
-    "user_type": "visitor",
+  "6325a16ae3a9969af75f8906": {
+    "username": "Haneen_Mohamed",
+    "joined_at": "2026-07-09T16:33:33.250258",
+    "last_seen": "2026-07-09T17:08:43.237380",
+    "user_type": "moderator",
     "is_active": true
   },
-  "6a1d9608004483740949dcae": {
-    "username": "S_A_R_A_72",
-    "joined_at": "2026-07-09T05:18:38.861333",
-    "last_seen": "2026-07-09T05:18:38.861333",
-    "user_type": "visitor",
+  "671fa277b48eadcc5082d32d": {
+    "username": "LIBYA_____",
+    "joined_at": "2026-07-09T16:43:35.262439",
+    "last_seen": "2026-07-09T16:43:35.262439",
+    "user_type": "moderator",
+    "is_active": true
+  },
+  "65a093ba8b86d5ac39cfdbed": {
+    "username": "lopns_",
+    "joined_at": "2026-07-09T17:06:51.733604",
+    "last_seen": "2026-07-09T17:06:51.733604",
+    "user_type": "room_owner",
     "is_active": true
   }
 }

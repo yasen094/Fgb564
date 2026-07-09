@@ -95,7 +95,7 @@ class MyBot(BaseBot):
         # نظام الحماية من الزحام
         self.crowd_protection_mode = {}
 
-        # إعداد معلومات البوت
+        # إعداد معلوماتمعلومات البوت
         self.my_user = None
         self.my_id = BOT_ID
 

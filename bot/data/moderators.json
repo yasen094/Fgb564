@@ -78,7 +78,11 @@
     "S_A_R_A_72",
     "XC_BOT_3",
     "v7.s",
-    "Q.10"
+    "Q.10",
+    "M.UM",
+    "viv_m",
+    "rc_33",
+    "TRX.20"
   ],
   "room_moderators": [
     "682bc2bc9fb4dce9e7cd4bd1",
@@ -142,10 +146,11 @@
     "67a8d00c6e038d2e58a44d86",
     "61097ed83a96959592d3bd11",
     "68e27efd3142a8d672a3f355",
-    "657dc863003b24d83ad52b9a"
+    "657dc863003b24d83ad52b9a",
+    "67f53b4d9d997810968b7179"
   ],
   "room_owner": "65a093ba8b86d5ac39cfdbed",
   "room_king": null,
   "room_queen": null,
-  "updated_at": "2026-07-09T21:04:35.176837"
+  "updated_at": "2026-07-12T00:10:07.057664"
 }

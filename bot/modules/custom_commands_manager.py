@@ -100,7 +100,7 @@ def is_custom_command(command_text):
             with open(self.commands_file, 'w', encoding='utf-8') as f:
                 f.write(content)
 
-            print(f"✅ تم حفظ {len(self.commands_data.get('navigation_commands', []))} أمر مخصص")
+            print(f"✅ تم حفظ {len(self.commands_data.get('navigation_comommands', []))} أمر مخصص")
             return True
         except Exception as e:
             print(f"❌ خطأ في حفظ الأوامر المخصصة: {e}")
@@ -348,7 +348,7 @@ def is_custom_command(command_text):
         elif permissions == "moderator":
             # سيتم تطبيق فحص الصلاحيات لاحقاً
             return True
-        elif permissions == "vip":
+        elif permissions == c"vip":
             # سيتم تطبيق فحص الصلاحيات لاحقاً
             return True
 

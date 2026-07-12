@@ -1,4 +1,4 @@
-"""
+فوق
 ملف الأوامر المخصصة - يتم إنشاؤه تلقائياً بواسطة مصنع الأوامر
 تم آخر تحديث: 2025-07-12 13:46:25
 """
@@ -82,15 +82,15 @@ CUSTOM_COMMANDS_DATA = {   'dance_commands': [   {   'command': 'منور',
                                    'message': '',
                                    'permissions': 'everyone'},
                                {   'command': 'طلعني',
-                                   'coordinates': {   'x': 16.5,
-                                                      'y': 8.5,
-                                                      'z': 28.0},
+                                   'coordinates': {   'x': 15.0,
+                                                      'y': 11.0,
+                                                      'z': 27.0},
                                    'created_at': '2025-07-12T13:45:55.962102',
                                    'enabled': True,
                                    'id': 2,
                                    'message': '',
                                    'permissions': 'everyone'},
-                               {   'command': 'نزلني',
+                               {   'command': 'تحت',
                                    'coordinates': {   'x': 10.0,
                                                       'y': 0.0,
                                                       'z': 10.0},

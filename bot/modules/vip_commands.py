@@ -430,7 +430,7 @@ class VipCommands:
         """نقل VIP إلى الموقع المميز"""
         try:
             from highrise import Position
-            vip_position = Position(13.0, 13.0, 27.0)
+            vip_position = Position(16.0, 19.0, 28.0)
             await self.bot.highrise.teleport(user.id, vip_position)
             print(f"💎 تم نقل {user.username} إلى موقع VIP")
             return "💎✨ مرحباً في منطقة VIP!"
